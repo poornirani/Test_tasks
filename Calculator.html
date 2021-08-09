@@ -1,0 +1,43 @@
+<html>
+
+<script>
+            function calculate()
+            {
+                p = document.getElementById("p").value;
+                n = document.getElementById("n").value;
+                r = document.getElementById("r").value;
+                result = document.getElementById("result");
+                
+                result.innerHTML = "The interest is " + (p*n*r/100);
+            }
+        </script>
+
+<body>
+<div class="simple-interest">
+	<h2>Simple Interest Calculator</h2>
+	
+		<label for="principal" class="principal">
+		
+		principal:<input id="p" type="text" placeholder="Loan Amount" />
+		</label></br></br>
+
+		<label for="rate" class="rate">
+		
+		Interest Rate:<input id="r" type="text" placeholder="Interest Rate" />
+		</label> </br></br>
+
+		<label for="time">
+		
+		No. of Years:<input id="n" type="number" placeholder="Years to Repay" />
+		</label></br></br>
+
+		<button onclick="calculate()" type="submit">Calculate</button>
+		
+		<p id="result"></p>
+
+	
+</div>
+</body>
+</html>
+
+
