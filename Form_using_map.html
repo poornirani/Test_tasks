@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Contact form</title>
+
+</head>
+<style>
+h1 {
+margin-left: 70px;
+}
+
+[type="submit"] {
+clear: left;
+margin: 20px 0 0 20px;
+font-size:18px
+}
+
+body {
+margin-left: 70px;
+font-weight: bold;
+}
+</style>
+<body>
+<h1>Contact Form</h1>
+
+<form>
+
+<label for="First">First Name:</label>
+<input type="text" id="First" placeholder= "First name" size="12" required></br></br>
+<label for="Last">Last Name:</label>
+<input type="text" id="Last" placeholder= "Last name" size="12" required></br></br>
+<label for="address">Address:</label>
+<input type="text" id="address" placeholder= "Address" size="50" required></br></br>
+<label for="quali">Qualification:</label>
+<select name="quali">
+<option selected="" value="Default">(Please select your Qualification)</option>
+<option value="BE">B.E.</option>
+<option value="BT">B.Tech</option>
+<option value="BCA">BCA</option>
+<option value="MCA">MCA</option>
+<option value="MT">M.Tech</option>
+<option value="OTH">Others</option>
+</select></br></br>
+
+<label for="email">Email:</label>
+<input type="text" id="email" placeholder= "Email" size="50" required></br></br>
+
+<label> ADHAAR NO.: </label>
+<input type="text" id="adhaar" placeholder="Unique Adhaar No." size="15"required> </br></br>  
+<label>Phone No :  </label> 
+<input type="text" id="phno" placeholder="phone number" size="15" required> </br></br>  
+<input type="submit" name="submit" value="Submit"  />
+
+</form>
+
+
+    <script type="text/javascript">
+
+        const contactform= new Map();
+        const uniquePhoneNumber=new Set();
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function (event) 
+        {
+            event.preventDefault();
+            const formData =new FormData(this);
+            const entries = formData.entries();
+            const data = Object.fromEntries(entries);
+            console.log(data);
+            if (contactform.has(data.adhaar)) 
+            {
+                alert('user already exist with given aadhar No.');
+                return false;
+            } 
+            else 
+            {
+                if (contactform.has(data.phno)) 
+                {
+                    alert('user already exist with given phone No.');
+                    return false;
+                }
+                contactform.set(data.adhaar, data);
+            }
+            uniquePhoneNumber.add(data.phno);
+            alert('you have successfully register');
+            form.reset();
+            console.log(Array.from(contactform.values()));
+        });
+        </script>
+
+</body>
+</html> 
